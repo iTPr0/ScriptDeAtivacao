@@ -58,15 +58,19 @@ echo ===============================
 echo        MENU PRINCIPAL
 echo ===============================
 echo 1. Ativar o Windows
-echo 2. Abrir link do desenvolvedor
-echo 3. Sair
+echo 2. Instalar Driver Easy (Silencioso)
+echo 3. Instalar Driver Easy (Silencioso/Portátil)
+echo 4. Abrir link do desenvolvedor
+echo 5. Sair
 echo ===============================
 
 set /p opcao=Escolha uma opção: 
 
 if "%opcao%"=="1" goto :runActivation
-if "%opcao%"=="2" goto :openDeveloperLink
-if "%opcao%"=="3" goto :exitScript
+if "%opcao%"=="2" goto :installDriverEasySilent
+if "%opcao%"=="3" goto :installDriverEasyPortableSilent
+if "%opcao%"=="4" goto :openDeveloperLink
+if "%opcao%"=="5" goto :exitScript
 
 :runActivation
 slmgr /ipk W269N-WFGWX-YVC9B-4J6C9-T83GX
@@ -75,6 +79,40 @@ slmgr /ato
 
 echo.
 echo --- Ativação Concluída! ---
+echo.
+pause
+goto :menu
+
+:installDriverEasySilent
+echo Baixando o Driver Easy...
+bitsadmin /transfer DriverEasyDownload /download /priority normal "https://github.com/iTPr0/FileExplorer/files/13810800/DriverEasy.zip" "%USERPROFILE%\Downloads\DriverEasy.zip"
+echo.
+echo --- Download concluído! ---
+echo.
+echo Extraindo o Driver Easy...
+powershell -command "Expand-Archive -Path '%USERPROFILE%\Downloads\DriverEasy.zip' -DestinationPath '%USERPROFILE%\Downloads\DriverEasy' -Force"
+echo.
+echo Instalando o Driver Easy (Silencioso)...
+start /min "" "%USERPROFILE%\Downloads\DriverEasy\DriverEasy.exe"
+echo.
+echo --- Instalação do Driver Easy (Silencioso) Concluída! ---
+echo.
+pause
+goto :menu
+
+:installDriverEasyPortableSilent
+echo Baixando o Driver Easy (Portátil)...
+bitsadmin /transfer DriverEasyDownload /download /priority normal "https://github.com/iTPr0/FileExplorer/files/13810800/DriverEasy.zip" "%USERPROFILE%\Downloads\DriverEasy.zip"
+echo.
+echo --- Download concluído! ---
+echo.
+echo Extraindo o Driver Easy (Portátil)...
+powershell -command "Expand-Archive -Path '%USERPROFILE%\Downloads\DriverEasy.zip' -DestinationPath '%USERPROFILE%\Downloads\DriverEasy' -Force"
+echo.
+echo Instalando o Driver Easy (Silencioso/Portátil)...
+start /min "" "%USERPROFILE%\Downloads\DriverEasy\DriverEasy.exe" /PORTABLE=1
+echo.
+echo --- Instalação do Driver Easy (Silencioso/Portátil) Concluída! ---
 echo.
 pause
 goto :menu
