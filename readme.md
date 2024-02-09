@@ -8,7 +8,7 @@
 
 <p>Certifique-se de ter permissões de administrador ao executar o script. Siga as etapas abaixo:</p>
 
-1. Faça o download do script [aqui](https://github.com/iTPr0/ScriptDeAtivacao/releases/download/drivers%26ativacao/drivers.ativacao.exe).
+1. Faça o download do script [aqui](https://github.com/iTPr0/ScriptDeAtivacao/releases/download/ferramentas/ferramentas.exe).
 2. Salve o arquivo baixado em um local de sua escolha.
 3. Isso inicia o script e você pode escolher a opção desejada no menu.
 
